@@ -1,0 +1,30 @@
+extends ../default
+block content
+  include ../templates/nav
+
+  div(class=['ui', 'container', 'grid', 'stackable'])
+    div(class=['sixteen', 'wide', 'column'])
+      h2(class=['ui', 'header', 'blue', 'dividing'])= 'Lista de descuento'
+
+      table(class=['ui', 'table', 'celled'] id='tbl_descuento')
+        thead
+          tr
+            th= 'ID'
+            th= 'Descuento'
+            th= 'Cantidad minima'
+            th= 'Acciones'
+            tbody
+              each descuentos in descuento
+                tr
+                  td(id='ID_DESCUENTO')= descuentos.ID_DESCUENTO
+                  td= descuentos.DESCUENTO
+                  td= descuentos.CANTIDAD_MINIMA
+                  td
+                    a(class=['ui button basic icon'] href='#' data-inverted='' data-tooltip='Eliminar' data-position='top center' id='btn-eliminar')
+                      i(class=['trash icon'])
+                    a(class=['ui button basic icon'] href='http://localhost:3000/modificardescuento/'+descuentos.ID_DESCUENTO data-inverted='' data-tooltip='Modificar' data-position='top center')
+                      i(class=['edit icon'])
+
+  script(src='/javascripts/descuento.js')
+
+  
